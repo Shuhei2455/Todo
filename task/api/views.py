@@ -7,7 +7,7 @@ from task.api.serializers import TaskSerializer
 class ListView(generics.ListCreateAPIView):
     queryset = Task.objects.all().order_by("-id")
     serializer_class = TaskSerializer
-    permission_classes = [IsAdminUserOrReadOnly]
+    # permission_classes = [IsAdminUserOrReadOnly]
 
 
 class DetailView(generics.RetrieveUpdateDestroyAPIView):
