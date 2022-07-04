@@ -1,18 +1,17 @@
 <template>
-    <div class="tasks_container">
-        <div class="tasks_content">
-            <ul class="tasks_list">
-                <li v-for="t in task" :key="t.id">
-                    <h2>{{ t.title }}</h2>
-                </li>
-            </ul>
-        </div>
-    </div>
+	<li v-for="t in task">
+		<input type="checkbox" v-model="t.isDone">
+			<span> {{ t.title }} </span>
+			<v-btn icon color="pink" v-on:click="deleteTask(index)">
+				<v-icon>mdi-close</v-icon>
+			</v-btn>
+		</input>
+	</li>
 </template>
 
 
 <script>
-import axios from 'axios' 
+import axios from 'axios'
 //import { apiService } from "../common/api.service.js"
 export default {
 	data() {
@@ -23,14 +22,16 @@ export default {
 	methods: {
 		getTask() {
 			axios
-			.get('http://127.0.0.1:8000/api/task/')
-			.then(response => (this.task = response.data.results))
-
-			//let endpoint = "/api/task/";
-
-			//apiService(endpoint).then(data => {
-			//	this.task = data
-			//})	
+				.get('http://127.0.0.1:8000/api/task/')
+				.then(response => (
+					this.task = {
+						title: response.data.results,
+						isDone: false
+					}
+				))
+		},
+		deleteTask(index) {
+			this.task.splice(index,1)
 		}
 	},
 	created() {
