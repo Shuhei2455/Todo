@@ -23,7 +23,6 @@
           dense
           flat
           hide-details
-          rounded
           solo-inverted
         ></v-text-field>
       </v-responsive>
@@ -32,13 +31,15 @@
     <v-navigation-drawer
       v-model="drawer"
       app
-      width="300"
+      permanent
+      width="250"
     >
       <v-navigation-drawer
         v-model="drawer"
         absolute
         color="grey lighten-3"
         mini-variant
+        permanent
       >
         <v-avatar
           class="d-block text-center mx-auto mt-4"
@@ -59,7 +60,7 @@
 
       <v-sheet
         color="grey lighten-5"
-        height="128"
+        height="80"
         width="100%"
       ></v-sheet>
 
@@ -79,26 +80,9 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-navigation-drawer
-      app
-      clipped
-      right
-    >
-      <v-list>
-        <v-list-item
-          v-for="n in 5"
-          :key="n"
-          link
-        >
-          <v-list-item-content>
-            <v-list-item-title>Item {{ n }}</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
 
     <v-main>
-      <!--Task /-->
+      <Task />
     </v-main>
 
     <v-footer
@@ -112,7 +96,6 @@
         dense
         flat
         hide-details
-        rounded
         solo
       ></v-text-field>
     </v-footer>
@@ -120,14 +103,14 @@
 </template>
 
 <script>
-//import Task from "./components/Task.vue";
+import Task from "./components/Task.vue";
 //import Test from "./views/Test.vue";
 //import Test1 from "./views/Test1.vue";
 export default {
   data: () => ({ drawer: null }),
   name: "App",
   components: {
-    //Task,
+    Task,
   }
 };
 </script>
