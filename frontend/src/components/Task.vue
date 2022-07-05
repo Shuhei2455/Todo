@@ -1,7 +1,7 @@
 <template>
 	<ul>
-		<li v-for="t in task" :key="t">
-			<span> {{ t }} </span>
+		<li v-for="t in task" :key="t.id">
+			{{ t.title}}
 		</li>
 	</ul>
 </template>
@@ -21,9 +21,7 @@ export default {
 			axios
 				.get('http://127.0.0.1:8000/api/task/')
 				.then(response => (
-					this.task = {
-						title: response.data.results,
-					}
+					this.task = response.data.results
 				))
 		}
 	},

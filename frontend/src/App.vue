@@ -1,20 +1,11 @@
 <template>
   <v-app id="inspire">
-    <v-system-bar app>
-      <v-spacer></v-spacer>
-
-      <v-icon>mdi-square</v-icon>
-
-      <v-icon>mdi-circle</v-icon>
-
-      <v-icon>mdi-triangle</v-icon>
-    </v-system-bar>
 
     <v-app-bar
       app
       clipped-right
       flat
-      height="72"
+      height="80"
     >
       <v-spacer></v-spacer>
 
@@ -104,8 +95,7 @@
 
 <script>
 import Task from "./components/Task.vue";
-//import Test from "./views/Test.vue";
-//import Test1 from "./views/Test1.vue";
+
 export default {
   data: () => ({ drawer: null }),
   name: "App",
