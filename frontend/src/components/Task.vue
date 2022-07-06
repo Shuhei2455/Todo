@@ -1,9 +1,13 @@
 <template>
-	<ul>
-		<li v-for="t in task" :key="t.id">
-			{{ t.title}}
-		</li>
-	</ul>
+	<v-app>
+		<v-contener class="spacing-playground pa-5">
+			<v-row v-for="t in task" :key="t.id" class="spacing-playground pa-1">
+				<v-card hover >
+					<v-card-title>{{ t.title }}</v-card-title>
+				</v-card>
+			</v-row>
+		</v-contener>
+	</v-app>
 </template>
 
 
