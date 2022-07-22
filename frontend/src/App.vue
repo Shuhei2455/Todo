@@ -73,35 +73,53 @@
 
 
     <v-main>
-      <Task />
+      <Task :tasks="tasks" />
     </v-main>
 
     <v-footer
       app
       color="transparent"
       height="72"
-      inset
-    >
-      <v-text-field
-        background-color="grey lighten-1"
-        dense
-        flat
-        hide-details
-        solo
-      ></v-text-field>
+      inset>
+      <TaskForm @parentMethod="addTask"/>
     </v-footer>
+
   </v-app>
 </template>
 
 <script>
+import axios from 'axios'
 import Task from "./components/Task.vue";
+import TaskForm from "./components/TaskForm.vue";
 
 export default {
-  data: () => ({ drawer: null }),
   name: "App",
   components: {
     Task,
-  }
+    TaskForm,
+  },
+  data() {
+    return {
+      newTask: '',
+	    tasks: [],
+    }
+	},
+	methods: {
+		getTasks() {
+			axios
+				.get('http://127.0.0.1:8000/api/task/')
+				.then(response => (
+					this.tasks = response.data.results
+				))
+		},
+    addTask(task) {
+      this.tasks.push(task)
+    }
+	},
+	created() {
+		this.getTasks()
+		document.title = "Task List";
+	},
 };
 </script>
 
@@ -115,3 +133,12 @@ export default {
   margin-top: 60px;
 }
 </style>
+
+
+	methods: {
+		postTask() {
+			axios
+				.post('http://127.0.0.1:8000/api/task/'
+        { title : this})
+		}
+	}

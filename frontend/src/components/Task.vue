@@ -1,6 +1,6 @@
 <template>
 	<ul>
-		<li v-for="t in task" :key="t.id">
+		<li v-for="t in tasks" :key="t.id">
 			{{ t.title}}
 		</li>
 	</ul>
@@ -8,26 +8,12 @@
 
 
 <script>
-import axios from 'axios'
+
 //import { apiService } from "../common/api.service.js"
 export default {
-	data() {
-		return {
-			task: [],
+		name : 'Task',
+		props : {
+			tasks: Object
 		}
-	},
-	methods: {
-		getTask() {
-			axios
-				.get('http://127.0.0.1:8000/api/task/')
-				.then(response => (
-					this.task = response.data.results
-				))
-		}
-	},
-	created() {
-		this.getTask()
-		document.title = "Task List";
-	}
 }
 </script>
