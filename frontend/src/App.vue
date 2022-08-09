@@ -82,25 +82,21 @@
       height="72"
       inset
     >
-      <v-text-field
-        background-color="grey lighten-1"
-        dense
-        flat
-        hide-details
-        solo
-      ></v-text-field>
+      <Form />
     </v-footer>
   </v-app>
 </template>
 
 <script>
 import Task from "./components/Task.vue";
+import Form from "./components/Form.vue";
 
 export default {
   data: () => ({ drawer: null }),
   name: "App",
   components: {
     Task,
+    Form,
   }
 };
 </script>
